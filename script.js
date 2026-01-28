@@ -15,21 +15,31 @@ document.addEventListener('DOMContentLoaded', () => {
         cargarTareas();
     };
 
-    const cargarTareas = () => {
-        tareasLista.innerHTML = '';
-        tareas.forEach(tarea => {
-            const div = document.createElement('div');
-            div.className = 'task';
-            div.innerHTML = `
-                <span class="${tarea.completed ? 'completed' : ''}">${tarea.text} - <span>${tarea.categoria}</span></span>
-                <span>${tarea.prioridad}</span>
-                <button class="eliminar" data-id="${tarea.id}">🗑️</button>
-            `;
-            div.querySelector('.eliminar').addEventListener('click', () => eliminarTarea(tarea.id));
-            tareasLista.appendChild(div);
+const cargarTareas = () => {
+    tareasLista.innerHTML = '';
+    tareas.forEach(tarea => {
+        const div = document.createElement('div');
+        div.className = 'task';
+        
+
+        div.innerHTML = `
+            <input type="checkbox" class="tarea-checkbox" ${tarea.completed ? 'checked' : ''} data-id="${tarea.id}">
+            <span class="${tarea.completed ? 'completed' : ''}">${tarea.text} - <span>${tarea.categoria}</span></span>
+            <span>${tarea.prioridad}</span>
+            <button class="eliminar" data-id="${tarea.id}">🗑️</button>
+        `;
+        
+        
+        div.querySelector('.tarea-checkbox').addEventListener('change', () => {
+            tarea.completed = !tarea.completed;
+            guardarTareas();
         });
-        actualizarProgreso();
-    };
+        
+        div.querySelector('.eliminar').addEventListener('click', () => eliminarTarea(tarea.id));
+        tareasLista.appendChild(div);
+    });
+    actualizarProgreso();
+};
 
     const agregarTarea = () => {
         if (tareaInput.value) {
@@ -59,11 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const porcentaje = total ? (completadas / total) * 100 : 0;
         progressBar.style.width = `${porcentaje}%`;
     };
-
-    toggleTheme.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        toggleTheme.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    });
 
     agregarBtn.addEventListener('click', agregarTarea);
     cargarTareas();

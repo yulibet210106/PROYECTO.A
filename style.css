@@ -53,6 +53,22 @@ select {
     flex: 1;
 }
 
+.task input[type="checkbox"] {
+    margin-right: 10px; 
+    cursor: pointer; 
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+    opacity: 0.6; 
+}
+
+
+.tarea-checkbox {
+    transform: scale(1.2); 
+}
+
 button {
     padding: 10px;
     background: #ff4081;
