@@ -5,6 +5,9 @@ body {
     transition: background-color 0.3s, color 0.3s;
     margin: 0;
     padding: 0;
+    background-image: url('https://www.shutterstock.com/image-vector/cherry-gingham-picnic-coquette-summer-600nw-2477369379.jpg');
+    background-size: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+    background-position: center; /* Centra la imagen en el contenedor */
 }
 
 .dark-mode {
@@ -20,9 +23,6 @@ body {
      background: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    background-image: url('https://m.media-amazon.com/images/I/81IJrVPf75L._AC_UF350,350_QL80_.jpg');
-    background-size: cover; /* Ajusta la imagen para que cubra todo el contenedor */
-    background-position: center; /* Centra la imagen en el contenedor */
 };
 
 header {
