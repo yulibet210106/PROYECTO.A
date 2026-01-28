@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const tareaInput = document.getElementById('tarea');
     const fechaInput = document.getElementById('fecha-vencimiento');
@@ -22,32 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const div = document.createElement('div');
             div.className = 'task';
             div.innerHTML = `
-                <span class="${tarea.completed ? 'completed' : ''}">${tarea.text} - <span class="category-label">${tarea.categoria}</span></span>
-                <span class="task-priority">${tarea.prioridad}</span>
-                <span>${tarea.fechaVencimiento}</span>
-                <button class="editar" data-id="${tarea.id}">✏️</button>
+                <span class="${tarea.completed ? 'completed' : ''}">${tarea.text} - <span>${tarea.categoria}</span></span>
+                <span>${tarea.prioridad}</span>
                 <button class="eliminar" data-id="${tarea.id}">🗑️</button>
             `;
             div.querySelector('.eliminar').addEventListener('click', () => eliminarTarea(tarea.id));
-            div.querySelector('.editar').addEventListener('click', () => editarTarea(tarea.id));
             tareasLista.appendChild(div);
         });
         actualizarProgreso();
     };
 
     const agregarTarea = () => {
-        const nuevaTarea = {
-            id: Date.now(),
-            text: tareaInput.value,
-            categoria: categoriaInput.value,
-            prioridad: prioridadInput.value,
-            fechaVencimiento: fechaInput.value,
-            completed: false,
-        };
-        tareas.push(nuevaTarea);
-        tareaInput.value = '';
-        fechaInput.value = '';
-        guardarTareas();
+        if (tareaInput.value) {
+            const nuevaTarea = {
+                id: Date.now(),
+                text: tareaInput.value,
+                categoria: categoriaInput.value,
+                prioridad: prioridadInput.value,
+                completed: false,
+            };
+            tareas.push(nuevaTarea);
+            tareaInput.value = '';
+            guardarTareas();
+        }
     };
 
     const eliminarTarea = (id) => {
@@ -55,15 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tareas = tareas.filter(tarea => tarea.id !== id);
             guardarTareas();
         }
-    };
-
-    const editarTarea = (id) => {
-        const tarea = tareas.find(t => t.id === id);
-        tareaInput.value = tarea.text;
-        fechaInput.value = tarea.fechaVencimiento;
-        categoriaInput.value = tarea.categoria;
-        prioridadInput.value = tarea.prioridad;
-        eliminarTarea(id);
     };
 
     const actualizarProgreso = () => {

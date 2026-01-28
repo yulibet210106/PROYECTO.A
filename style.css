@@ -3,6 +3,8 @@ body {
     background-color: #f9f9f9;
     color: #333;
     transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    padding: 0;
 }
 
 .dark-mode {
@@ -11,9 +13,9 @@ body {
 }
 
 .container {
-    width: 80%;
-    margin: auto;
+    width: 90%;
     max-width: 600px;
+    margin: auto;
     padding: 20px;
     background: #fff;
     border-radius: 12px;
@@ -24,6 +26,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 h1 {
@@ -33,11 +36,14 @@ h1 {
 
 .task-input {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-input[type="text"], input[type="date"], select {
+input[type="text"],
+input[type="date"],
+select {
     padding: 10px;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
@@ -51,6 +57,7 @@ button {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 button:hover {
@@ -69,26 +76,11 @@ button:hover {
     margin: 5px 0;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
-    transition: background-color 0.2s;
-}
-
-.task:hover {
-    background-color: #f8f8f8;
 }
 
 .completed {
     text-decoration: line-through;
     color: gray;
-}
-
-.task-priority {
-    margin-left: 10px;
-    font-weight: bold;
-}
-
-.category-label {
-    margin-left: 10px;
-    color: #a0a0a0;
 }
 
 #progress-bar-container {
@@ -103,4 +95,14 @@ button:hover {
     width: 0;
     background: #ff4081;
     transition: width 0.3s;
+}
+
+@media (max-width: 600px) {
+    .task-input {
+        flex-direction: column;
+    }
+
+    .task-input > * {
+        width: 100%;
+    }
 }
