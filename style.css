@@ -1,33 +1,106 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode {
+    background-color: #333;
+    color: #f9f9f9;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    max-width: 600px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 h1 {
-  text-align: center;
+    font-size: 1.8em;
+    color: #ff4081;
 }
 
-input {
-  padding: 8px;
-  width: 60%;
+.task-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="date"], select {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    flex: 1;
 }
 
 button {
-  padding: 8px;
-  cursor: pointer;
+    padding: 10px;
+    background: #ff4081;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+button:hover {
+    background: #e6007e;
 }
 
-li {
-  background-color: #ffffff;
-  margin-top: 8px;
-  padding: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+#tareas-lista {
+    margin-top: 20px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.task:hover {
+    background-color: #f8f8f8;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.task-priority {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.category-label {
+    margin-left: 10px;
+    color: #a0a0a0;
+}
+
+#progress-bar-container {
+    background: #eee;
+    height: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0;
+    background: #ff4081;
+    transition: width 0.3s;
 }
